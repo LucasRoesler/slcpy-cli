@@ -1,7 +1,8 @@
 # CLIs for Fun and Profit with Python
 
 This repo contains some small examples of building commandline interfaces
-using python.
+using python. See the presentation slides at
+http://slides.com/lucasroesler/slcpy-cli-1
 
 ## Who
 My name is [Lucas Roesler](http://lucasroesler.com)!
