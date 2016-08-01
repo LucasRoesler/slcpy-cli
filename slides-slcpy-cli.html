@@ -25,7 +25,7 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section class="stack" data-id="30634d38a8c6341c800783a2d7d6bd8e"><section class="has-dark-background" data-id="04f3a7701603dde4273a70bac3997fc2" data-background-color="#292841"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 199px; height: auto;" data-block-id="42805775e79237c4c964f0f0bfd20e58">
+				<section class="stack" data-id="30634d38a8c6341c800783a2d7d6bd8e"><section class="has-dark-background" data-id="04f3a7701603dde4273a70bac3997fc2" data-background-color="#292841"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="42805775e79237c4c964f0f0bfd20e58">
     <div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(239, 239, 239); text-align: center; z-index: 11; background-color: rgb(41, 40, 65);">
 <h1><span>Buildng </span></h1>
 
@@ -783,23 +783,88 @@ setup(
     <div class="sl-block-content" style="z-index: 13;">
         <img data-natural-width="245" data-natural-height="180" data-src="http://i.giphy.com/WiM5K1e9MtEic.gif">
     </div>
-</div></section></section><section class="has-dark-background" data-background-color="#292841" data-id="20d7c9d0a6827f0790aae55a0d0c2e41"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="9747305d40ab9b641c1a1dc4c5c72330">
+</div></section></section><section class="has-light-background" data-background-color="#efefef" data-id="c8a95f7ca056dedd27cb5285c0233a04">
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 6px;" data-block-id="b0a2315b8bbf2a4c2bee5fde51f39d49">
+    <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; color: rgb(56, 62, 99); text-align: left; padding: 5px;">
+<h2>Cheat sheet</h2>
+</div>
+</div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 400px; left: 80px; top: 90px;" data-block-id="e6b7bf93866d16716d0e4a89419cf9ba"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; color: rgb(56, 62, 99); text-align: left;">
+<ul>
+	<li>-h/--help</li>
+</ul>
+
+<p> </p>
+
+<ul>
+	<li>subcommands</li>
+</ul>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<ul>
+	<li>Multiple Args</li>
+	<li>Multiple Options</li>
+	<li>Repeat Options</li>
+</ul>
+
+<p> </p>
+
+<ul>
+	<li>Options and Args</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 480px; height: 75px; left: 480px; top: 103px;" data-block-id="60431e08b35058d8c495d380e39e0158"><div class="sl-block-content" style="z-index: 13;"><pre class="python"><code>CONTEXT_SETTINGS = dict(
+    help_option_names=['-h', '--help'])
+@click.group(context_settings=CONTEXT_SETTINGS)
+</code></pre></div></div>
+<div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 480px; height: 116px; left: 480px; top: 387px;" data-block-id="9f45c4137126a5aacc5a13e86d9600ff"><div class="sl-block-content" style="z-index: 14;"><pre class="python"><code>@click.argument('args', nargs=-1)
+
+@click.option('--opt1', '-o1', nargs=2)
+
+@click.option('--opt2', '-o2', multiple=True)</code></pre></div></div>
+<div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 480px; height: 178px; left: 480px; top: 191px;" data-block-id="ec378f7938d2a193ad3bc9792e98d18e"><div class="sl-block-content" style="z-index: 15;"><pre class="python"><code>@click.group()
+def cli(): pass
+
+@cli.command()
+def bar(): pass
+
+@cli.command()
+def baz(): pass</code></pre></div></div>
+<div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 480px; height: 140px; left: 480px; top: 560px;" data-block-id="6069f864d68a1ce7bd7e2cea220190c1"><div class="sl-block-content" style="z-index: 16;"><pre class="python"><code>@click.command()
+@click.argument('bars', nargs=-1)
+@click.option('--baz', '-b', default='fuzz')
+def foo(bars, baz):
+    click.echo('bars = {}'.format(bars))
+    click.echo('baz = {}'.format(baz))</code></pre></div></div>
+<div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 273px; height: 38px; left: 127px; top: 603px;" data-block-id="72106b65680022d015d8812b810b6232"><div class="sl-block-content" style="z-index: 17;"><pre class="bash"><code>foo a b c -o bar</code></pre></div></div>
+<div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 273px; height: 50px; left: 127px; top: 128px;" data-block-id="a7cd531bbac9ef216e129bfb5d2b33a3"><div class="sl-block-content" style="z-index: 18;"><pre class="bash"><code>foo -h
+foo --help</code></pre></div></div>
+<div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 273px; height: 52px; left: 127px; top: 228px;" data-block-id="22b695eea8295a5a86a60ccf155488ea"><div class="sl-block-content" style="z-index: 19;"><pre class="bash"><code>foo bar 1 2 3
+foo baz 1 2 3</code></pre></div></div>
+<div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 330px; height: 54px; left: 127px; top: 503px;" data-block-id="a63516daccaa8c238e760ef6d49e135a"><div class="sl-block-content" style="z-index: 20;"><pre class="python"><code>foo a b c -o1 10 20 -o2 x -o2 y</code></pre></div></div></section><section class="has-dark-background" data-background-color="#292841" data-id="20d7c9d0a6827f0790aae55a0d0c2e41"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="9747305d40ab9b641c1a1dc4c5c72330">
     <div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(239, 239, 239); text-align: center; z-index: 11; background-color: rgb(41, 40, 65);">
 <h1><span>Thanks!</span></h1>
 </div>
 </div>
 <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 474px;" data-block-id="236fabce599684c3c100a23f8bcb510b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
-<p>Join Us! </p>
+<p>Join Us, We're Hiring! </p>
 
 <p>eventboard.workable.com</p>
-</div></div></section>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 360px; height: 103.05px; left: 300px; top: 317px;" data-block-id="784942f65002b87764b339d4cc9a5970"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="1600" data-natural-height="458" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/551189/images/2886373/eb-logo-white.png"></div></div></section>
 			</div>
 		</div>
 
 
 		
 <script>
-	var SLConfig = {"current_user":{"id":551189,"username":"lucasroesler","name":"Lucas Roesler","description":"","thumbnail_url":"https://lh6.googleusercontent.com/-rCducnqYsWE/AAAAAAAAAAI/AAAAAAAADzo/iQS3x3XWwX8/photo.jpg?sz=50","pro":false,"team_id":null,"settings":{"id":395258,"present_controls":true,"present_upsizing":true,"present_notes":true,"editor_grid":true,"editor_snap":true,"developer_mode":true},"email":"roesler.lucas@gmail.com","notify_on_receipt":true,"billing_address":null,"editor_tutorial_completed":true,"manually_upgraded":false,"deck_user_editor_limit":1},"deck":{"id":766122,"slug":"slcpy-cli-1","title":"CLIs for Fun and Profit with Python","description":"Python, being the wonderful batteries included language that it is, bundles argparse in the standard library. Beyond argparse we also discuss click and hug. Presented for the SLCPython Meetup group (http://slcpy.com/).","visibility":"all","published_at":"2016-07-31T17:07:08.260Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/a27cba0e38bffe724194525fdceccdbc/thumb.jpg","view_count":3,"user":{"id":551189,"username":"lucasroesler","name":"Lucas Roesler","description":"","thumbnail_url":"https://lh6.googleusercontent.com/-rCducnqYsWE/AAAAAAAAAAI/AAAAAAAADzo/iQS3x3XWwX8/photo.jpg?sz=50","pro":false,"team_id":null,"settings":{"id":395258,"present_controls":true,"present_upsizing":true,"present_notes":true}},"background_transition":"slide","transition":"slide","theme_id":null,"theme_font":"montserrat","theme_color":"black-blue","auto_slide_interval":0,"comments_enabled":true,"forking_enabled":true,"rolling_links":false,"center":false,"should_loop":false,"share_notes":true,"slide_number":true,"rtl":false,"version":2,"collaborative":false,"deck_user_editor_limit":1,"data_updated_at":1470008075081,"access_token":"XTcxhVbP1yTZqxnA9T7QsecsfrEr","notes":{"b4d3865b377b70a57dd0b08c5ae40260":"Many of the tools we use on a day to day basis expose their true power on the CLI.\n\nFor example, GIT.\n\nAlso, I don't need to be a designer to build a powerful tool!","9f8bdd36c6f92acd03262952549c2ac2":"Why write CLIs in the day age of Siri and Google Now?","f91f6b98fa363450c49fc8623a18424c":"Why?\n- We use Github to manage our code and we use git tags with Github Releases to manage our releases.\n- We use a \"git flow\"-like branching scheme\n- Github's default flow isn't \"git flow\"\n- We have had \"fat finger\" incidents"}}};
+	var SLConfig = {"current_user":{"id":551189,"username":"lucasroesler","name":"Lucas Roesler","description":"","thumbnail_url":"https://lh6.googleusercontent.com/-rCducnqYsWE/AAAAAAAAAAI/AAAAAAAADzo/iQS3x3XWwX8/photo.jpg?sz=50","pro":false,"team_id":null,"settings":{"id":395258,"present_controls":true,"present_upsizing":true,"present_notes":true,"editor_grid":true,"editor_snap":true,"developer_mode":true},"email":"roesler.lucas@gmail.com","notify_on_receipt":true,"billing_address":null,"editor_tutorial_completed":true,"manually_upgraded":false,"deck_user_editor_limit":1},"deck":{"id":766122,"slug":"slcpy-cli-1","title":"CLIs for Fun and Profit with Python","description":"Python, being the wonderful batteries included language that it is, bundles argparse in the standard library. Beyond argparse we also discuss click and hug. Presented for the SLCPython Meetup group (http://slcpy.com/).","visibility":"all","published_at":"2016-07-31T17:07:08.260Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/a27cba0e38bffe724194525fdceccdbc/thumb.jpg","view_count":23,"user":{"id":551189,"username":"lucasroesler","name":"Lucas Roesler","description":"","thumbnail_url":"https://lh6.googleusercontent.com/-rCducnqYsWE/AAAAAAAAAAI/AAAAAAAADzo/iQS3x3XWwX8/photo.jpg?sz=50","pro":false,"team_id":null,"settings":{"id":395258,"present_controls":true,"present_upsizing":true,"present_notes":true}},"background_transition":"slide","transition":"slide","theme_id":null,"theme_font":"montserrat","theme_color":"black-blue","auto_slide_interval":0,"comments_enabled":true,"forking_enabled":true,"rolling_links":false,"center":false,"should_loop":false,"share_notes":true,"slide_number":true,"rtl":false,"version":2,"collaborative":false,"deck_user_editor_limit":1,"data_updated_at":1470066641731,"access_token":"XTcxhVbP1yTZqxnA9T7QsecsfrEr","notes":{"b4d3865b377b70a57dd0b08c5ae40260":"Many of the tools we use on a day to day basis expose their true power on the CLI.\n\nFor example, GIT.\n\nAlso, I don't need to be a designer to build a powerful tool!","9f8bdd36c6f92acd03262952549c2ac2":"Why write CLIs in the day age of Siri and Google Now?","f91f6b98fa363450c49fc8623a18424c":"Why?\n- We use Github to manage our code and we use git tags with Github Releases to manage our releases.\n- We use a \"git flow\"-like branching scheme\n- Github's default flow isn't \"git flow\"\n- We have had \"fat finger\" incidents"}}};
 </script>
 
 		<script>
